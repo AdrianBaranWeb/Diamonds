@@ -39,7 +39,7 @@ class Game extends Common{
         this.clearMatched();
         canvas.drawGameOnCanvas(this.gameState);
         this.gameState.getGameBoard().forEach(diamond => diamond.draw());
-        this.animationFrame = window.requestAnimationFrame(() => this.animate());
+        this.checkEndOfGame();
     }
 
     handleMouseState(){
@@ -225,6 +225,19 @@ class Game extends Common{
                 diamond.alpha = 255;
             }
         })
+    }
+    checkEndOfGame(){
+        if(!this.gameState.getLeftMovement() && !this.gameState.getIsMoving() && !this.gameState.getIsSwaping()){
+            const isPlayerWinner = this.gameState.isPlayerWinner();
+
+            if(isPlayerWinner && gameLevels[this.gameState.level]){
+                console.log('Wygrałeś')
+            }
+
+            console.log('jeżeli gracz ma więcej punktów to aktualizacja high scores')
+        } else{
+            this.animationFrame = window.requestAnimationFrame(() => this.animate());
+        }
     }
 
     swap(firstDiamond, secondDiamond){
