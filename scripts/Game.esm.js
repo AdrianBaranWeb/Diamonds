@@ -10,7 +10,9 @@ import { DIAMOND_SIZE, NUMBER_OF_DIAMONDS_TYPES } from './Diamond.esm.js';
 const DIAMONDS_ARRAY_WIDTH = 8;
 const DIAMONDS_ARRAY_HEIGHT = DIAMONDS_ARRAY_WIDTH + 1; // first line is invisible
 const LAST_ELEMENT_DIAMONDS_ARRAY = DIAMONDS_ARRAY_WIDTH * DIAMONDS_ARRAY_HEIGHT - 1;
+//add speed panel control into settings
 const SWAPING_SPEED = 8;
+const TRANSPARENCY_SPEED = 10;
 
 class Game extends Common{
     constructor(){
@@ -31,6 +33,7 @@ class Game extends Common{
         this.handleMouseClick();
         this.findMatches();
         this.moveDiamonds();
+        this.hideAnimation();
         this.countScores();
         this.revertSwap();
         this.clearMatched();
@@ -151,6 +154,19 @@ class Game extends Common{
             }
 
             if(dx || dy){
+                this.gameState.setIsMoving(true);
+            }
+        })
+    }
+
+    hideAnimation(){
+        if(this.gameState.getIsMoving()){
+            return;
+        }
+
+        this.gameState.getGameBoard().forEach(diamond => {
+            if(diamond.match && diamond.alpha > TRANSPARENCY_SPEED){
+                diamond.alpha -= TRANSPARENCY_SPEED;
                 this.gameState.setIsMoving(true);
             }
         })
