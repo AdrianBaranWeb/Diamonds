@@ -6,6 +6,7 @@ import { media } from './Media.esm.js';
 import { GameState } from './GameState.esm.js';
 import { mouseControler } from './MouseControler.esm.js';
 import { DIAMOND_SIZE, NUMBER_OF_DIAMONDS_TYPES } from './Diamond.esm.js';
+import { resultScreen } from './ResultScreen.esm.js'
 
 const DIAMONDS_ARRAY_WIDTH = 8;
 const DIAMONDS_ARRAY_HEIGHT = DIAMONDS_ARRAY_WIDTH + 1; // first line is invisible
@@ -226,6 +227,7 @@ class Game extends Common{
             }
         })
     }
+    
     checkEndOfGame(){
         if(!this.gameState.getLeftMovement() && !this.gameState.getIsMoving() && !this.gameState.getIsSwaping()){
             const isPlayerWinner = this.gameState.isPlayerWinner();
@@ -234,7 +236,9 @@ class Game extends Common{
                 console.log('Wygrałeś')
             }
 
-            console.log('jeżeli gracz ma więcej punktów to aktualizacja high scores')
+            console.log('jeżeli gracz ma więcej punktów to aktualizacja high scores');
+
+            resultScreen.viewResultScreen(isPlayerWinner, this.gameState.getPlayerPoints(), this.gameState.level);
         } else{
             this.animationFrame = window.requestAnimationFrame(() => this.animate());
         }
