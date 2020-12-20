@@ -9,7 +9,7 @@ import { DIAMOND_SIZE, NUMBER_OF_DIAMONDS_TYPES } from './Diamond.esm.js';
 import { resultScreen } from './ResultScreen.esm.js'
 import { userData } from './UserData.esm.js';
 
-const DIAMONDS_ARRAY_WIDTH = 8;
+export const DIAMONDS_ARRAY_WIDTH = 8;
 const DIAMONDS_ARRAY_HEIGHT = DIAMONDS_ARRAY_WIDTH + 1; // first line is invisible
 const LAST_ELEMENT_DIAMONDS_ARRAY = DIAMONDS_ARRAY_WIDTH * DIAMONDS_ARRAY_HEIGHT - 1;
 //add speed panel control into settings
@@ -400,12 +400,12 @@ class Game extends Common{
                 return true;
             }
 
-            if(!this.isPossibleToMove){
-                this.gameState.mixDiamonds();
-            }
-
             return false;
         })
+
+        if(!this.isPossibleToMove){
+            this.gameState.mixDiamonds();
+        }
     }
     
     checkEndOfGame(){
