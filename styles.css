@@ -4,6 +4,7 @@
 
 *{
     box-sizing: border-box;
+    background-repeat: no-repeat;
 }
 
 *:focus{
@@ -31,7 +32,6 @@
     height: 480px;
     background-image: url('./images/splashscreen.png');
     background-size: contain;
-    background-repeat: no-repeat;
     background-position: center;
 }
 
@@ -57,9 +57,8 @@ body{
 }
 
 
-.start-screen__button, .level-select__button, .end-screen__button, .settings-screen__button, .mini-settings-layer__button{
+button{
     border: none;
-    background-repeat: no-repeat;
     background-color: transparent;
     background-size: contain;
     cursor: pointer;
@@ -73,12 +72,12 @@ body{
 .start-screen__button{
     display: flex;
     flex-grow: 0;
+    width: 124px;
+    height: 60px;
+    max-width: 363px;
     margin-top: 10px;
     padding: 0;
     background-image: url('./images/button-start.png');
-    width: 124px;
-    max-width: 363px;
-    height: 60px;
 }
 
 .start-screen__button--is-settings{
@@ -95,11 +94,10 @@ body{
 
 .level-select{
     display: flex;
-    padding: 175px 125px;
     flex-wrap: wrap;
+    padding: 175px 125px;
     background-image: url('./images/levelselectscreen.png');
     background-size: contain;
-    background-repeat: no-repeat;
     background-position: center;
 }
 
@@ -122,7 +120,6 @@ body{
     background-color: rgba(100, 100, 100, .3);
     background-size: 300px;
     backdrop-filter: blur(2px);
-    background-repeat: no-repeat;
     background-position: center top;
 }
 
@@ -163,14 +160,13 @@ body{
 }
 
 .settings-screen{
+    z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 125px 200px;
-    z-index: 10;
     background-image: url('./images/settings-screen.png');
     background-color: rgba(100, 100, 100, 0.3);
-    background-repeat: no-repeat;
     background-position: center center;
     background-size: 350px;
     backdrop-filter: blur(2px);
