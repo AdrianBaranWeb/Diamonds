@@ -61,7 +61,13 @@ body{
     border: none;
     background-repeat: no-repeat;
     background-color: transparent;
+    background-size: contain;
     cursor: pointer;
+}
+
+.level-select__button, .end-screen__button, .settings-screen__button, .mini-settings-layer, .mini-settings-layer__button{
+    width: 50px;
+    height: 50px;
 }
 
 .start-screen__button{
@@ -70,7 +76,6 @@ body{
     margin-top: 10px;
     padding: 0;
     background-image: url('./images/button-start.png');
-    background-size: contain;
     width: 124px;
     max-width: 363px;
     height: 60px;
@@ -99,12 +104,9 @@ body{
 }
 
 .level-select__button{
-    width: 50px;
-    height: 50px;
     margin-right: 20px;
     font-size: 20px;
     background-image: url('./images/levelicon.png');
-    background-size: cover;
 }
 
 .level-select__button:hover{
@@ -145,10 +147,7 @@ body{
 }
 
 .end-screen__button{
-    width: 50px;
-    height: 50px;
     background-image: url('./images/button-exit.png');
-    background-size: 50px;
 }
 
 .end-screen__button:hover{
@@ -185,9 +184,6 @@ body{
 
 .settings-screen__button{
     margin-right: 10px;
-    width: 50px;
-    height: 50px;
-    background-size: 50px;
 }
 
 .settings-screen__button--is-music{
@@ -235,14 +231,9 @@ body{
     right: 50px;
     bottom: 150px;
     left: unset;
-    width: 50px;
-    height: 50px;
 }
 
 .mini-settings-layer__button{
-    width: 50px;
-    height: 50px;
-    background-size: 50px;
     background-image: url('./images/button-mini-settings.png');
 }
 
