@@ -14,12 +14,13 @@ export const DIAMONDS_ARRAY_WIDTH = 8;
 const DIAMONDS_ARRAY_HEIGHT = DIAMONDS_ARRAY_WIDTH + 1; // first line is invisible
 const LAST_ELEMENT_DIAMONDS_ARRAY = DIAMONDS_ARRAY_WIDTH * DIAMONDS_ARRAY_HEIGHT - 1;
 //add speed panel control into settings
-const SWAPING_SPEED = 8;
+let SWAPING_SPEED = 5;
 const TRANSPARENCY_SPEED = 10;
 
 class Game extends Common{
     constructor(){
         super();
+        this.isFast = false;
     }
     
     playLevel(level){
@@ -433,6 +434,39 @@ class Game extends Common{
             resultScreen.viewResultScreen(isPlayerWinner, this.gameState.getPlayerPoints(), this.gameState.level);
         } else{
             this.animationFrame = window.requestAnimationFrame(() => this.animate());
+        }
+    }
+
+    toggleSwapSpeed(){
+        if(this.isFast){
+            SWAPING_SPEED = 5;
+            this.checkSwapSpeed();
+        }else{
+            SWAPING_SPEED = 20;
+            this.checkSwapSpeed();
+        }
+    }
+
+    increaseSwapSpeed(){
+        if(SWAPING_SPEED >= 20) return;
+
+        SWAPING_SPEED++
+        this.checkSwapSpeed();
+    }
+    
+    decreaseSwapSpeed(){
+        if(SWAPING_SPEED <= 5) return;
+        
+
+        SWAPING_SPEED--
+        this.checkSwapSpeed();
+    }
+
+    checkSwapSpeed(){
+        if(SWAPING_SPEED >= 12){
+            this.isFast = true;
+        }else{
+            this.isFast = false;
         }
     }
 
