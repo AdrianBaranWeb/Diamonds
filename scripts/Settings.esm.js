@@ -10,9 +10,10 @@ const SETTINGS_SCREEN_ID = 'js-settings-screen';
 const SOUND_ON_OFF_BUTTON_ID = 'js-sound-on-off';
 const SOUND_VOLUME_DOWN_ID = 'js-sound-volume-decrease';
 const SOUND_VOLUME_UP_ID = 'js-sound-volume-increase';
-const SWAP_SPEED_FAST_SLOW_BUTTON_ID = 'js-swap-speed-fast-slow';
 const SWAP_SPEED_DOWN_ID = 'js-swap-speed-decrease';
 const SWAP_SPEED_UP_ID = 'js-swap-speed-increase';
+
+export const SWAP_SPEED_FAST_SLOW_BUTTON_ID = 'js-swap-speed-fast-slow';
 
 class Settings extends Common{
     constructor(){

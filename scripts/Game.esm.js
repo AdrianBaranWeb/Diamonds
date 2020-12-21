@@ -9,6 +9,7 @@ import { DIAMOND_SIZE, NUMBER_OF_DIAMONDS_TYPES } from './Diamond.esm.js';
 import { resultScreen } from './ResultScreen.esm.js'
 import { userData } from './UserData.esm.js';
 import { mainMenu } from './MainMenu.esm.js';
+import { SWAP_SPEED_FAST_SLOW_BUTTON_ID } from './Settings.esm.js';
 
 export const DIAMONDS_ARRAY_WIDTH = 8;
 const DIAMONDS_ARRAY_HEIGHT = DIAMONDS_ARRAY_WIDTH + 1; // first line is invisible
@@ -21,6 +22,7 @@ class Game extends Common{
     constructor(){
         super();
         this.isFast = false;
+        this.checkSwapSpeed();
     }
     
     playLevel(level){
@@ -467,6 +469,16 @@ class Game extends Common{
             this.isFast = true;
         }else{
             this.isFast = false;
+        }
+        
+        const speedBtn = this.bindToElement(SWAP_SPEED_FAST_SLOW_BUTTON_ID);
+        
+        if(this.isFast){
+            speedBtn.classList.remove('settings-screen__button--is-slow');
+            speedBtn.classList.add('settings-screen__button--is-speed');
+        }else{
+            speedBtn.classList.remove('settings-screen__button--is-speed');
+            speedBtn.classList.add('settings-screen__button--is-slow');
         }
     }
 

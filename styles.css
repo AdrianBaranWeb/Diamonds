@@ -238,9 +238,18 @@ button{
 }
 
 .settings-screen__button--is-speed{
+    background-image: url('./images/button-speed-fast.png');
+}
+
+.settings-screen__button--is-speed:hover{
+    background-image: url('./images/button-speed-fast-hover.png');
+}
+
+.settings-screen__button--is-slow{
     background-image: url('./images/button-speed-slow.png');
 }
-.settings-screen__button--is-speed:hover{
+
+.settings-screen__button--is-slow:hover{
     background-image: url('./images/button-speed-slow-hover.png');
 }
 
