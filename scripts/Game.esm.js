@@ -36,10 +36,11 @@ class Game extends Common{
         media.playBackgroundMusic();
         this.animate();
     }
-
+    
     animate(){
         this.handleMouseState();
         this.handleMouseClick();
+        this.checkDiamond();
         this.findMatches();
         this.moveDiamonds();
         this.hideAnimation();
@@ -70,7 +71,6 @@ class Game extends Common{
         
         if(!yClicked || xClicked >= DIAMONDS_ARRAY_WIDTH || yClicked >= DIAMONDS_ARRAY_HEIGHT){
             mouseControler.state = 0;
-       
             return;
         }
         
@@ -79,21 +79,11 @@ class Game extends Common{
                 x: xClicked,
                 y: yClicked
             }
-
-            const firstDiamond = mouseControler.firstClick.y * DIAMONDS_ARRAY_WIDTH + mouseControler.firstClick.x;
-            this.gameState.getGameBoard()[firstDiamond].alpha = 190;
-
         } else if (mouseControler.state === 2) {
             mouseControler.secondClick = {
                 x: xClicked,
                 y: yClicked
             }
-
-            this.gameState.getGameBoard().some(diamond => {
-                if(diamond.alpha !== 255){
-                    diamond.alpha = 255
-                }
-            })
 
             mouseControler.state = 0;
 
@@ -114,6 +104,18 @@ class Game extends Common{
         }
 
         mouseControler.clicked = false;
+    }
+
+    checkDiamond(){     
+        if(mouseControler.state === 0 && !this.gameState.getIsMoving() && !this.gameState.getIsSwaping() ) {
+            this.gameState.getGameBoard().some(diamond => {
+                diamond.alpha = 255
+            })
+            return;
+        }else if(mouseControler.state === 1){
+            const firstDiamond = mouseControler.firstClick.y * DIAMONDS_ARRAY_WIDTH + mouseControler.firstClick.x;
+            this.gameState.getGameBoard()[firstDiamond].alpha = 180;
+        }
     }
 
     findMatches(){
