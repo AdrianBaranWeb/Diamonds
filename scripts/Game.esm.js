@@ -108,8 +108,10 @@ class Game extends Common{
 
     checkDiamond(){     
         if(mouseControler.state === 0 && !this.gameState.getIsMoving() && !this.gameState.getIsSwaping() ) {
-            this.gameState.getGameBoard().some(diamond => {
-                diamond.alpha = 255
+            this.gameState.getGameBoard().forEach(diamond => {
+                if(diamond.alpha !== 255){
+                    diamond.alpha = 255;
+                }
             })
             return;
         }else if(mouseControler.state === 1){
