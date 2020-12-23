@@ -69,7 +69,8 @@ class Game extends Common{
         const xClicked = Math.floor((mouseControler.x - GAME_BOARD_X_OFFSET) / DIAMOND_SIZE);
         const yClicked = Math.floor((mouseControler.y - GAME_BOARD_Y_OFFSET) / DIAMOND_SIZE);
         
-        if(!yClicked || xClicked >= DIAMONDS_ARRAY_WIDTH || yClicked >= DIAMONDS_ARRAY_HEIGHT){
+        if(!yClicked || xClicked < 0 || xClicked >= DIAMONDS_ARRAY_WIDTH || yClicked >= DIAMONDS_ARRAY_HEIGHT)
+        {
             mouseControler.state = 0;
             return;
         }
@@ -113,7 +114,6 @@ class Game extends Common{
                     diamond.alpha = 255;
                 }
             })
-            return;
         }else if(mouseControler.state === 1){
             const firstDiamond = mouseControler.firstClick.y * DIAMONDS_ARRAY_WIDTH + mouseControler.firstClick.x;
             this.gameState.getGameBoard()[firstDiamond].alpha = 180;
